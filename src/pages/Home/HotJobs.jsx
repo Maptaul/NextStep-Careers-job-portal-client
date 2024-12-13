@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import HotJobCard from "./HotJobCard";
+import HotJobCard from "./HotjobCard";
 
 const HotJobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -13,7 +13,7 @@ const HotJobs = () => {
   }, []);
   return (
     <div>
-      <div>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {jobs.map((job) => (
           <HotJobCard key={job._id} job={job} />
         ))}
