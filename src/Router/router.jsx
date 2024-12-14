@@ -1,9 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
+import JobApply from "../pages/JobApply/JobApply";
 import JobDetails from "../pages/JobDetails/JobDetails";
+import MyApplications from "../pages/MyApplications/MyApplications";
 import Register from "../pages/Register/Register";
 import SignIn from "../pages/SignIn/SignIn";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -17,9 +20,29 @@ const router = createBrowserRouter([
       },
       {
         path: "/jobs/:id",
-        element: <JobDetails />,
+        element: (
+          <PrivetRoute>
+            <JobDetails />
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/jobs/${params.id}`),
+      },
+      {
+        path: "jobApply/:id",
+        element: (
+          <PrivetRoute>
+            <JobApply />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/myApplications",
+        element: (
+          <PrivetRoute>
+            <MyApplications />
+          </PrivetRoute>
+        ),
       },
       {
         path: "register",
