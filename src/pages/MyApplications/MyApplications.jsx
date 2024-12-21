@@ -1,18 +1,30 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyApplications = () => {
   const { user } = useAuth();
   //   console.log("hello ................dfsafaf", user);
   const [jobs, setJobs] = useState([]);
 
+  const axiosSecure = useAxiosSecure();
+
   useEffect(() => {
     console.log(user?.email);
-    fetch(`http://localhost:3000/job-applications?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
-      });
+    // fetch(`https://job-portal-server-flax-eta.vercel.app/job-applications?email=${user?.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setJobs(data);
+
+    // axios
+    //   .get(`http:// :3000/job-applications?email=${user?.email}`, {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => setJobs(res.data));
+
+    axiosSecure
+      .get(`/job-applications?email=${user?.email}`)
+      .then((res) => setJobs(res.data));
   }, [user?.email]);
   return (
     <div>

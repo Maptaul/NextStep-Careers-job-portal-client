@@ -29,7 +29,9 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/jobs/${params.id}`),
+          fetch(
+            `https://job-portal-server-flax-eta.vercel.app/jobs/${params.id}`
+          ),
       },
       {
         path: "jobApply/:id",
@@ -71,7 +73,9 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/job-applications/jobs/${params.job_id}`),
+          fetch(
+            `https://job-portal-server-flax-eta.vercel.app/job-applications/jobs/${params.job_id}`
+          ),
       },
       {
         path: "register",

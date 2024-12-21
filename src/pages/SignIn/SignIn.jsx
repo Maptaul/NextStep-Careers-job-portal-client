@@ -1,6 +1,7 @@
+import axios from "axios";
 import Lottie from "lottie-react";
 import { useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import loginLottieJon from "../../assets/lottie/login.json";
 import AuthContext from "../../Context/AuthContext/AuthContext.jsx/AuthContext";
 import SocialLogin from "../shared/SocialLogin";
@@ -8,9 +9,8 @@ import SocialLogin from "../shared/SocialLogin";
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
   const location = useLocation();
-  const navigate = useNavigate();
+
   console.log("location from signIn", location);
-  const from = location.state || "/";
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -21,8 +21,16 @@ const SignIn = () => {
 
     signInUser(email, password)
       .then((result) => {
-        console.log("sing in", result.user);
-        navigate(from);
+        console.log("sing in", result.user.email);
+        const user = { email: result.user.email };
+        axios
+          .post("https://job-portal-server-flax-eta.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+        // navigate(from);
       })
       .catch((error) => {
         console.log(error);
