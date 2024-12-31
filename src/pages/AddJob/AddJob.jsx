@@ -14,15 +14,15 @@ const AddJob = () => {
     const { min, max, currency, ...newJob } = initialData;
     console.log(newJob);
     newJob.salaryRange = {
-      min,
-      max,
+      min: parseInt(min),
+      max: parseInt(max),
       currency,
     };
     newJob.requirements = newJob.requirements.split("\n");
     newJob.responsibilities = newJob.responsibilities.split("\n");
     console.log(newJob);
 
-    fetch("https://job-portal-server-flax-eta.vercel.app/jobs", {
+    fetch("http://localhost:3000/jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

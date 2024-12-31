@@ -7,9 +7,7 @@ const MyPostedJobs = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(
-      `https://job-portal-server-flax-eta.vercel.app/jobs?email=${user.email}`
-    )
+    fetch(`http://localhost:3000/jobs?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);

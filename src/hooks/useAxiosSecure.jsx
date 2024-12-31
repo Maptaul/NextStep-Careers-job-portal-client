@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const axiosInstance = axios.create({
-  baseURL: "https://job-portal-server-flax-eta.vercel.app",
+  baseURL: "http://localhost:3000",
   withCredentials: true,
 });
 

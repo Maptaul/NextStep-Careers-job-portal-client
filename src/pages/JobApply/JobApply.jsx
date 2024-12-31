@@ -25,7 +25,7 @@ const JobApply = () => {
       github,
       resume,
     };
-    fetch("https://job-portal-server-flax-eta.vercel.app/job-applications", {
+    fetch("http://localhost:3000/job-applications", {
       method: "POST",
       headers: {
         "content-type": "application/json",

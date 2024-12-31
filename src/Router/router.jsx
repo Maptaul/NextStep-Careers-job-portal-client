@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import AddJob from "../pages/AddJob/AddJob";
+import AllJob from "../pages/AllJob/AllJob";
 import Home from "../pages/Home/Home";
 import JobApply from "../pages/JobApply/JobApply";
 import JobDetails from "../pages/JobDetails/JobDetails";
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/jobs",
+        element: <AllJob />,
+      },
+      {
         path: "jobs/:id",
         element: (
           <PrivetRoute>
@@ -29,9 +34,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://job-portal-server-flax-eta.vercel.app/jobs/${params.id}`
-          ),
+          fetch(`http://localhost:3000/jobs/${params.id}`),
       },
       {
         path: "jobApply/:id",
@@ -73,9 +76,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://job-portal-server-flax-eta.vercel.app/job-applications/jobs/${params.job_id}`
-          ),
+          fetch(`http://localhost:3000/job-applications/jobs/${params.job_id}`),
       },
       {
         path: "register",
