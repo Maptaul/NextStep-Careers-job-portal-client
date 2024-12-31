@@ -24,7 +24,7 @@ const SignIn = () => {
         console.log("sing in", result.user.email);
         const user = { email: result.user.email };
         axios
-          .post("http://localhost:3000/jwt", user, {
+          .post("https://job-portal-server-flax-eta.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {

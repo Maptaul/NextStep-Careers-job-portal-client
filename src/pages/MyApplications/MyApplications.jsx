@@ -11,7 +11,7 @@ const MyApplications = () => {
 
   useEffect(() => {
     console.log(user?.email);
-    // fetch(`http://localhost:3000/job-applications?email=${user?.email}`)
+    // fetch(`https://job-portal-server-flax-eta.vercel.app/job-applications?email=${user?.email}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setJobs(data);
